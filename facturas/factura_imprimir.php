@@ -387,15 +387,19 @@ if($datos[0]['recibe_tarjetas'] == 1)
   </tr>
   <?php
     $id_empresa = $_SESSION['id_empresa'];
-    $subtotal =  muestre_items_nuevo($datos[0]['id_orden'],$tabla15,$conexion,$id_empresa,$datos['0']['resolucion']); 
+    $subtotalRep =  muestre_items_nuevo_codigo($datos[0]['id_orden'],$tabla15,$conexion,$id_empresa,$datos['0']['resolucion'],'09'); 
+    $subtotalMan =  muestre_items_nuevo_codigo($datos[0]['id_orden'],$tabla15,$conexion,$id_empresa,$datos['0']['resolucion'],'M'); 
   //$valoriva = ($subtotal * $datos[0]['iva'])/100;
-  if($subtotal > 750000)
+    $subtotal =  $subtotalRep + $subtotalMan;
+    if($subtotal > 750000)
 	  			{
 					$porcentaje_retencion = 4;
 				}
 	  else 		{
 	  				$porcentaje_retencion = 0;
-	  			}			
+	  			}		
+          
+          
 
 	  $retencion = ($valoriva * $porcentaje_retencion)/100;
 	  $total = $subtotal + $valoriva  + $retencion ;
@@ -421,10 +425,10 @@ if($datos[0]['recibe_tarjetas'] == 1)
 	?>
 	
 	</h8></td>
-    <td width="13%"><h8>
-      &nbsp;
+    <td width="13%" align="right"><h8>
+      RESPUESTOS
     </h8></td>
-    <td width="5%"><h8>&nbsp;
+    <td width="5%"><h8>
       
     </h8></td>
     <td width="13%"><h8>
@@ -432,17 +436,22 @@ if($datos[0]['recibe_tarjetas'] == 1)
     <?php  
         if( $datos[0]['resolucion'] == 1)  
 
-            { echo '$'.number_format($datos[0]['subtotalfac'], 0, ',', '.'); }
+            { echo '$R'.number_format($datos[0]['subtotalfac'], 0, ',', '.'); }
          else
-          {echo '$'.number_format($total, 0, ',', '.'); } 
+          {
+            //aqui va el total de repuestos
+            echo '$'.number_format($subtotalRep, 0, ',', '.'); 
+          
+          } 
 
     ?>
 	</div>
     </h8></td>
   </tr>
 <tr>
-  <td>
-  <h8><div align="center"><?php echo $palabra_iva  ?></div></h8>
+  <td align= "right">
+  <h8><div align="center"><?php echo $palabra_iva  ?></div>
+  SERVICIOS</h8>
   </td>
     <td width="5%"><h8>
 	</td>
@@ -451,23 +460,23 @@ if($datos[0]['recibe_tarjetas'] == 1)
     <?php 
          if( $datos[0]['resolucion'] == 1)  
              { echo '$'.number_format($datos[0]['ivafac'], 0, ',', '.'); }
-           else{   echo '$2';    }
+           else{   echo '$'.number_format($subtotalMan, 0, ',', '.');    }
       ?>
 	</div>
     </h8></td>
   
 </tr>
-<tr>
+/* <tr>
   <td> <h8><div align="center"><?php echo $palabra_retefuente ?> </div></h8></td>
   <td>&nbsp;</td>
   <td><h8>
 	<div align = "right">
-    <?php  echo '$2'.number_format($datos[0]['retefuentefac'], 0, ',', '.') ?>
+    <?php  //echo '$'.number_format($datos[0]['retefuentefac'], 0, ',', '.') ?>
 	</div>
     </h8></td>
-</tr>
+</tr> */
 <tr>
-  <td> <h8><div align="center">TOTAL!! </div></h8></td>
+  <td> <h8><div align="right">TOTAL </div></h8></td>
   <td>&nbsp;</td>
   <td><h8>
 	<div align = "right">

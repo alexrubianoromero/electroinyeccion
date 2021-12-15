@@ -137,7 +137,73 @@ function muestre_items_nuevo($orden,$tabla,$conexion,$id_empresa,$resolucion)
 				//echo '<br>'.$sql_items_orden.'<br>';
 				$consulta_items = mysql_query($sql_items_orden,$conexion);
 				$no_item = 0 ;
-     while($items = mysql_fetch_array($consulta_items))
+     			while($items = mysql_fetch_array($consulta_items))
+	 		 {
+			 $i++;
+	 			echo '<tr>
+			     
+                <td width="38"><div align="center"><h8>'.$items['cantidad'].'</h8></div></td>
+    			<td width="60" ><h8> '.$items['descripcion'].'</h7></td>
+				<td width="87"><h8><div align = "right"> '.'$'.number_format($items['valor_unitario'], 0, ',', '.').'</div></h8></td>';
+				
+				 $total_del_item = $items['total_item'];
+				if($resolucion == '0')
+						{
+								//$total_del_item = $items['total_item_con_iva'];
+						}	
+
+    			echo '<td width="82"><h8><div align = "right">'.'$'. number_format($total_del_item, 0, ',', '.').'</div></h8></td>';
+				if ($items['iva']==1)
+						{ $valor_iva = '16'; }
+						else {$valor_iva = '0';}
+				 echo '<td width="82"><h8><div align = "right">'; 
+				 
+			    if ($resolucion == 1)		
+					{  echo $valor_iva.'%';
+					       
+						 if ($items['iva']==1) 
+						  {
+						    echo '</div></h8></td>
+   			    		     <td width="85"><h8><div align = "right">'.'$'.number_format($items['total_item_con_iva'], 0, ',', '.').'</div></h8></td>
+						    </tr>
+						    ';
+							}
+						else 	
+							{
+								echo '</div></h8></td>
+   			    		     <td width="85"><h8><div align = "right">'.'$'.number_format($items['total_item'], 0, ',', '.').'</div></h8></td>
+						    </tr>
+						    ';
+							}
+				    }
+				else
+					{
+					echo '</div></h8></td>
+   			    		<td width="85"><h8><div align = "right">'.'$'.number_format($items['total_item'], 0, ',', '.').'</div></h8></td>
+						</tr>
+						';	
+					}			
+				//<td width="34">'.$i.'</td>
+				if($resolucion =='0')
+					{ $subtotal = $subtotal + $total_del_item;}
+				else			
+					{ $subtotal = $subtotal + $items['total_item'];}
+			 }
+			 return $subtotal; 
+		}
+function muestre_items_nuevo_codigo($orden,$tabla,$conexion,$id_empresa,$resolucion,$repman)
+		{
+				$subtotal = 0;
+				//echo 'pasooooooooooooooooo3333333333333333333'.$orden;
+				$sql_items_orden = "select * from  $tabla 
+				where no_factura = '".$orden."' 
+				and id_empresa = '".$id_empresa."'  
+				and codigo = '".$repman."'
+				order by id_item ";
+				//echo '<br>'.$sql_items_orden.'<br>';
+				$consulta_items = mysql_query($sql_items_orden,$conexion);
+				$no_item = 0 ;
+     			while($items = mysql_fetch_array($consulta_items))
 	 		 {
 			 $i++;
 	 			echo '<tr>
