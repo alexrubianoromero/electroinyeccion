@@ -26,40 +26,17 @@ $tabla25 = "relacion_orden_inventario";
 $servidor = "127.0.0.1";
 $usuario = "root";
 $clave  = "peluche2016";
-$nombrebase = "freedom";
-
-//$nombrebase = "freedom_powerbike";
+$nombrebase = "base_electroinyeccion";
 
 
-
-/*
-$servidor = "localhost";
-$usuario = "alexrubi_admin";
-$clave  = "79566096";
-$nombrebase = "alexrubi_edelcarolaya";
-*/
+// $servidor = "localhost";
+// $usuario = "ctwtvsxj_admin";
+// $clave  = "ElMejorProgramador***";
+// $nombrebase = "ctwtvsxj_base_electroinyeccion";
 
 
-/*
-$servidor = "localhost";
-$usuario = "alexrubi_admin";
-$clave  = "79566096";
-$nombrebase = "alexrubi_pruebas";
-*/
 
-/*
-$servidor = "localhost";
-$usuario = "alexrubi_admin";
-$clave  = "79566096";
-$nombrebase = "alexrubi_nomina";
-*/
 
-/*
-$servidor = "localhost";
-$usuario = "alexrubi_admin";
-$clave  = "79566096";
-$nombrebase = "alexrubi_nomina";
-*/
 $conexion =mysql_connect($servidor,$usuario,$clave);
 $la_base =mysql_select_db($nombrebase,$conexion);
 
