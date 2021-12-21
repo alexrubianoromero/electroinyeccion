@@ -30,7 +30,7 @@ while($items = mysql_fetch_assoc($consulta_items))
 //echo '<br>'.$texto_items;
 //echo '<br>'.$suma_items;
 
-$body = 'KAYMO
+$body = 'ELECTROINYECCION
 
 Te informa el avance de tu orden de reparacion
 
@@ -38,15 +38,11 @@ Placa: '.$_REQUEST['placa'].'  Orden No: '.$_REQUEST['idorden'].'
 
 Puedes ver tu orden de reparacion en el siguiente link:
 
-https://www.alexrubiano.com/demo1/ordendetrabajo/'.$_REQUEST['idorden'].'
+https://www.alexrubiano.com/electroinyeccion/ordendetrabajo/'.$_REQUEST['idorden'].'
 
 
-KAYMO. 
-Taller KAYMO
-3124551226 
-
-O envianos un E-mail a ventas@alexrubiano.com 
-Recuerda, estamos ubicados en la cll 26 con 73';
+Taller ELECTROINYECCION
+';
 
 //echo '<br>'.$texto_items;
 
