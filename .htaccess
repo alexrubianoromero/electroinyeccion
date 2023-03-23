@@ -1,13 +1,13 @@
-Options +FollowSymLinks
-RewriteEngine on
-
-RewriteRule ^ordendetrabajo/([0-9]+)$ orden/orden_imprimir_honda_cero_sin_sesion.php?idorden=$1
-
-RewriteRule ^factura/([0-9]+)$ facturas/orden_imprimir_honda_cero_sin_sesion.php?id_factura=$1
-
-RewriteRule ^peritaje/([0-9]+)$ peritajes/vista/imprimirPeritaje.php?id=$1
-
-RewriteRule ^pdf/([0-9]+)$ peritajes/vista/pdfPeritaje.php?id=$1
-
-RewriteRule ^pdfCotizacion/([0-9]+)$ cotizaciones/vista/pdfCotizacion.php?id=$1
-
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^ordendetrabajo/([0-9]+)$ orden/orden_imprimir_honda_cero_sin_sesion.php?idorden=$1
+
+RewriteRule ^factura/([0-9]+)$ facturas/orden_imprimir_honda_cero_sin_sesion.php?id_factura=$1
+
+RewriteRule ^peritaje/([0-9]+)$ peritajes/vista/imprimirPeritaje.php?id=$1
+
+RewriteRule ^pdf/([0-9]+)$ peritajes/vista/pdfPeritaje.php?id=$1
+
+RewriteRule ^pdfCotizacion/([0-9]+)$ cotizaciones/vista/pdfCotizacion.php?id=$1
+
