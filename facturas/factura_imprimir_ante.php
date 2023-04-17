@@ -448,12 +448,37 @@ exit();
 
 
 
-
+<div id="Layer2"><img src="<?php  echo $ruta_imagen    ?>" width="208" height="87"></div>
 
 <div id="Layer3"></div>
 
 <br>
 
+<?php
+
+if($datos[0]['recibe_tarjetas'] == 1)
+
+	{
+
+	echo '
+
+		<div id="Layer4">
+
+		  <h7>
+
+			<div align="center">RECIBIMOS TARJETAS DEBITO Y CREDITO</div>
+
+		  </h7>
+
+		</div>
+
+		<div id="Layer3"><img src="'.$ruta_imagen2.'" width="235" height="32"></div>
+
+		';
+
+	}	
+
+?>
 
 <br>
 
@@ -489,6 +514,17 @@ exit();
 
       <div align="center">
 
+	    <?php
+
+		
+
+	  		echo $razon_social;
+
+			
+
+						
+
+			?>		
 
 	  
 
@@ -500,7 +536,7 @@ exit();
 
       <div align="center">
 
-       
+        <?php  echo $linea2;  ?>
 
       </div>
 
@@ -512,13 +548,13 @@ exit();
 
     <td><h9>
 
-      <div align="center"></div>
+      <div align="center"><?php echo $datos[0]['direccion'].' - '.$datos[0]['telefonos']   ?></div>
 
     </h9></td>
 
     <td><h9><div align="center">
 
-       
+        <?php  echo $linea3;  ?>
 
         </div></h9></td>
 
@@ -528,7 +564,7 @@ exit();
 
     <td><h9>
 
-      <div align="center"><?php echo '<h9></h9>'; //LUNES A SABADO DE 8:00 AM A 6:00 PM DOMINGOS Y FESTIVOS DE 9:00 AM  A 1:00 PM    ?></div>
+      <div align="center"><?php echo '<h9>'.$datos[0]['horario'].'</h9>'; //LUNES A SABADO DE 8:00 AM A 6:00 PM DOMINGOS Y FESTIVOS DE 9:00 AM  A 1:00 PM    ?></div>
 
     </h9></td>
 
@@ -550,7 +586,7 @@ exit();
 
     <td><h9>
 
-      <div align="center"></div>
+      <div align="center"><?php  echo $datos[0]['email_empresa'] //servi-martha@hotmail.com   ?></div>
 
     </h9></td>
 
